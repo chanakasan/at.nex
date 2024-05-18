@@ -59,6 +59,8 @@ validate_script_vars() {
 
 finish() {
   echo " done"
+  echo " please run:"
+  echo " source ~/.bashrc"
   echo
 }
 
