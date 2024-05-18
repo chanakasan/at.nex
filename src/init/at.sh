@@ -37,8 +37,10 @@ at_rel() {
 }
 
 at_ed() {
-  if [ "$1" == "a" ]; then
+  if [ "$1" == "brc" ]; then
     vim $HOME/.bashrc
+  elif [ "$1" == "vrc" ]; then
+    vim $HOME/.vimrc
   else
     vim $HOME/bashrc2
   fi
