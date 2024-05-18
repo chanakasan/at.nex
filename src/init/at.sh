@@ -1,8 +1,9 @@
 @ () {
+  local base=$nx_at_root
   local input="$1"
   if [ -z "$input" ]; then
     echo "Hello @ !"
   else
-    run "$@"
+    bash $base/src/cmd/run.sh "$@"
   fi
 }
