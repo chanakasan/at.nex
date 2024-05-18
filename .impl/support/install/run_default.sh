@@ -1,8 +1,4 @@
-set -e
-
-source $nex_support/install/helpers.sh
-
-main() {
+run_default() {
   local item_name="$1"
   local item_short_name="${1%.*}"
   local item_type="${1##*.}"
@@ -12,5 +8,3 @@ main() {
   copy_to_bashrc
   finish
 }
-
-main $@

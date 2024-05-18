@@ -1,9 +1,7 @@
 set -e
 
-main() {
-  local root=$HOME/dotfiles/at.nex
-  local nex_support=$root/.impl/support
-  bash $nex_support/install/run_default.sh "at.nex"
-}
+tmp_root=$HOME/dotfiles/at.nex
+tmp_support=$tmp_root/.impl/support
+source $tmp_support/install/helpers.sh
 
-main
+run_default "at.nex"
