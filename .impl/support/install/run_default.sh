@@ -1,4 +1,6 @@
-run_default() {
+source $tmp_support/install/helpers.sh
+
+main() {
   local item_name="$1"
   local item_short_name="${1%.*}"
   local item_type="${1##*.}"
@@ -8,3 +10,5 @@ run_default() {
   copy_to_bashrc
   finish
 }
+
+main $@
