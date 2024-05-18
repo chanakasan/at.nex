@@ -1,13 +1,12 @@
 @ () {
   local base=$nx_at_root
-  local input="$1"
   if args_empty $@; then
     print_usage
     return
   elif is_match "rel" $@; then
     at_rel
   elif is_match "ed" $@; then
-    at_ed
+    at_ed ${@:2}
   else
     at_run $@
   fi
@@ -38,7 +37,11 @@ at_rel() {
 }
 
 at_ed() {
-  vim $HOME/.bashrc
+  if [ "$1" == "a" ]; then
+    vim $HOME/.bashrc
+  else
+    vim $HOME/bashrc2
+  fi
 }
 
 at_run() {
