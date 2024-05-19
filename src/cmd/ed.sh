@@ -20,8 +20,4 @@ ed_bash() {
   vim $HOME/user/bash
 }
 
-ed_script() {
-  vim $HOME/user/script
-}
-
 main $@
