@@ -20,4 +20,8 @@ ed_bash() {
   vim $HOME/user/bash
 }
 
+ed_ssh() {
+  vim $HOME/.ssh/config
+}
+
 main $@
