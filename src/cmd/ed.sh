@@ -1,11 +1,15 @@
 main() {
   if [ -z "$1" ]; then
-    vim $HOME/bashrc2
+    ed_default
   elif [[ $(type -t "ed_$1") == "function" ]]; then
     ed_$1
   else
     echo " not found: @ ed $@"
   fi
+}
+
+ed_default() {
+  vim $HOME/bashrc2
 }
 
 ed_brc() {
