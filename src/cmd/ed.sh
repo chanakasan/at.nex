@@ -1,14 +1,27 @@
 main() {
-  local main_cmd="@ ed $@"
   if [ -z "$1" ]; then
     vim $HOME/bashrc2
-  elif [ "$1" == "brc" ]; then
-    vim $HOME/.bashrc
-  elif [ "$1" == "vrc" ]; then
-    vim $HOME/.vimrc
+  elif [[ $(type -t "ed_$1") == "function" ]]; then
+    ed_$1
   else
-    echo " not found: $main_cmd"
+    echo " not found: @ ed $@"
   fi
+}
+
+ed_brc() {
+  vim $HOME/.bashrc
+}
+
+ed_vrc() {
+  vim $HOME/.vimrc
+}
+
+ed_bash() {
+  vim $HOME/user/bash
+}
+
+ed_script() {
+  vim $HOME/user/script
 }
 
 main $@
