@@ -1,20 +1,25 @@
 @ () {
   local base=$nx_at_root
-  if _at_is_match "rel" $@; then
-    source $HOME/.bashrc
-  elif _at_is_match "update" $@; then
-    bash $base/src/cmd/update.sh ${@:2}
-  elif _at_is_match "ed" $@; then
-    bash $base/src/cmd/ed.sh ${@:2}
+  local fn=_@$1
+  if [[ $(type -t "$fn") == "function" ]]; then
+    $fn ${@:2}
   else
     bash $base/src/cmd/run.sh "$@"
   fi
 }
 
-_at_is_match() {
-  if [ "$1" == "$2" ]; then
-    return 0
-  else
-    return 1
-  fi
+_@hello() {
+  echo "Hello @ !"
+}
+
+_@ed() {
+  bash $base/src/cmd/ed.sh ${@:2}
+}
+
+_@update() {
+  bash $base/src/cmd/update.sh ${@:2}
+}
+
+_@rel() {
+  source $HOME/.bashrc
 }

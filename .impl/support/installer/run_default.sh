@@ -1,4 +1,4 @@
-source $tmp_support/install/helpers.sh
+source $tmp_support/installer/helpers.sh
 
 main() {
   local item_name="$1"
