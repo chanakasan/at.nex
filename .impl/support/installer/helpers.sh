@@ -58,7 +58,7 @@ get_item_path() {
 init_script_vars() {
   this_bashrc="$HOME/.bashrc"
   this_name=$item_short_name
-  this_item_path=$(get_item_path)
+  this_item_path=$item_path
   this_start_text='__nex_'$this_name'_start'
   this_end_text='__nex_'$this_name'_end'
   this_middle_text="source $this_item_path/src/entry.sh"
@@ -68,6 +68,7 @@ validate_user_vars() {
   require_param "item_short_name"
   require_param "item_name"
   require_param "item_type"
+  require_param "item_path"
 }
 
 validate_script_vars() {
