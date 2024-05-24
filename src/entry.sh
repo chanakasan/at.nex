@@ -1,4 +1,4 @@
-nx_at_root=$HOME/dotfiles/at.nex
+export nx_at_root=$HOME/dotfiles/at.nex
 source $nx_at_root/.internal/core/at.sh
 source $nx_at_root/.internal/core/subcommands.sh
 
