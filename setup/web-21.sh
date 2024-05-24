@@ -10,13 +10,12 @@ main() {
 }
 
 clone_repo() {
-  echo " => Cloning $git_url"
+  echo " => Setup started"
   if [ -d "$install_dir" ]; then
     echo " Dir exists: $install_dir"
     echo " Please remove it first" 
     exit 1
   fi
-
   mkdir -p $install_dir
   git clone $git_url $install_dir
 }
