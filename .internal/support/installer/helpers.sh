@@ -28,6 +28,7 @@ copy_to_bashrc() {
 validate() {
   validate_user_vars
   init_script_vars
+  touch_bashrc
   log item_name: $item_name
   log item_type: $item_type
   log item_short_name: $item_short_name
@@ -39,6 +40,10 @@ validate() {
 log() {
   return
   echo " $*"
+}
+
+touch_bashrc() {
+  touch $this_bashrc
 }
 
 temp_patch() {
