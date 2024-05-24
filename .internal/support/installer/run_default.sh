@@ -1,4 +1,4 @@
-source $tmp_support/installer/helpers.sh
+source $nx_at_support/installer/helpers.sh
 
 main() {
   local item_name="$1"
