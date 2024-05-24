@@ -1,3 +1,5 @@
+set -e
+
 source $nx_at_support/installer/helpers.sh
 
 main() {
