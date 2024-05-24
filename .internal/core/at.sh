@@ -4,6 +4,6 @@
   if [[ $(type -t "$fn") == "function" ]]; then
     $fn $@
   else
-    bash $base/src/cmd/run.sh "$@"
+    bash $base/.internal/cmd/run.sh "$@"
   fi
 }

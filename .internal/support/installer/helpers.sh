@@ -66,7 +66,7 @@ init_script_vars() {
   this_item_path=$item_path
   this_start_text='__nex_'$this_name'_start'
   this_end_text='__nex_'$this_name'_end'
-  this_middle_text="source $this_item_path/src/entry.sh"
+  this_middle_text="source $this_item_path/.internal/entry.sh"
 }
 
 validate_user_vars() {

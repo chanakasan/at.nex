@@ -2,14 +2,14 @@ _@hello() {
   echo "Hello @ !"
 }
 
+_@rel() {
+  source $HOME/.bashrc
+}
+
 _@ed() {
-  bash $base/src/cmd/ed.sh ${@:2}
+  bash $base/.internal/cmd/ed.sh ${@:2}
 }
 
 _@update() {
-  bash $base/src/cmd/update.sh ${@:2}
-}
-
-_@rel() {
-  source $HOME/.bashrc
+  bash $base/.internal/cmd/update.sh ${@:2}
 }

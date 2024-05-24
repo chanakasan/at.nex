@@ -1,4 +1,5 @@
 source $nx_at_root/src/config/config.sh
+source $nx_at_root/src/config/ed.sh
 
 main() {
   local editor=${nx_at_editor:-vim}
@@ -11,28 +12,12 @@ main() {
   fi
 }
 
-ed_config() {
-  $editor $nx_at_root/src/config/config.sh
-}
-
 ed_default() {
   $editor $HOME/bashrc2
 }
 
-ed_brc() {
-  $editor $HOME/.bashrc
-}
-
-ed_vrc() {
-  $editor $HOME/.vimrc
-}
-
-ed_bash() {
-  $editor $HOME/user/bash
-}
-
-ed_ssh() {
-  $editor $HOME/.ssh/config
+ed_config() {
+  $editor $nx_at_root/src/config/config.sh
 }
 
 main $@
