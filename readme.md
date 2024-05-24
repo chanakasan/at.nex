@@ -4,7 +4,7 @@
 
 ```
 mkdir -p ~/dotfiles
-git clone <repo> ~/dotfiles/at.nex
+git clone https://github.com/chanakasan/at.nex ~/dotfiles/at.nex
 sh ~/dotfiles/at.nex/setup/install.sh 
 ```
 
