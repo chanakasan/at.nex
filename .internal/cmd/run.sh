@@ -51,20 +51,18 @@ try_script() {
   local base_path="$1"
   if [ ! -d $base_path ]; then
     log try_script: not dir: $base_path
-    return 1
-  fi
-  build_files_index $base_path
-  local key="$2"
-  local value="${files_index[$key]}"
-  local file=$value
-  log key: $key
-  log value: $value
-  log file: $file
-  if [ -f "$file" ]; then
-    bash "$file"
-    exit $?
   else
-    return
+    build_files_index $base_path
+    local key="$2"
+    local value="${files_index[$key]}"
+    local file=$value
+    log key: $key
+    log value: $value
+    log file: $file
+    if [ -f "$file" ]; then
+      bash "$file"
+      exit $?
+    fi
   fi
 }
 
@@ -86,9 +84,9 @@ exit_if_empty() {
 }
 
 build_files_index() {
+  log build_files_index
   local basepath="$1"
   exit_if_empty $basepath
-  log build_files_index
   declare -g -A files_index
   while IFS= read -r -d '' file; do
     filename=$(basename -s.sh "$file")
