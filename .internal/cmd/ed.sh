@@ -20,4 +20,8 @@ ed_config() {
   $editor $nx_at_root/src/config/config.sh
 }
 
+ed_alias() {
+  $editor $nx_at_root/src/config/alias.sh
+}
+
 main $@
