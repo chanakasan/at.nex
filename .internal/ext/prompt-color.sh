@@ -7,7 +7,7 @@ nx_set_prompt_color() {
   local c0="\[\e[01;00m\]"
   local c235="\[\e[38;5;235m\]"
   local reset="\[\e[00m\]"
-  local nx_prefix_str="############# "
+  local nx_prefix_str="########## "
   local nx_prompt_prefix="${c235}${nx_prefix_str}${reset}"
   local nx_prompt_top="${c32}\u@\h${reset}:${c34}\w${reset}\n"
   local nx_prompt_end="${c0}\$${reset} "

@@ -13,3 +13,19 @@ _@ed() {
 _@update() {
   bash $base/.internal/cmd/update.sh ${@:2}
 }
+
+_@cd() {
+  while true; do
+    read -p "[$(pwd)] " input
+    if [[ -z "$input" ]]; then
+        echo
+        break
+    fi
+    set -- $input
+    if [[ $1 == "~" ]]; then
+      cd $HOME
+    else
+      cd "$input"
+    fi
+  done
+}
