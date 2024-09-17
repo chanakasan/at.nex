@@ -6,6 +6,10 @@ _@rel() {
   source $HOME/.bashrc
 }
 
+_@r() {
+  _@rel
+}
+
 _@ed() {
   bash $base/.internal/cmd/ed.sh ${@:2}
 }
@@ -15,19 +19,30 @@ _@update() {
 }
 
 _@cd() {
+  local destination="$PWD"
+  local first_char=""
   while true; do
-    read -e -p "[$(pwd)] " input
+    read -e -p "[$destination] " input
     if [[ -z "$input" ]]; then
         echo
         break
     fi
-    set -- $input
-    if [[ $1 == "~" ]]; then
-      cd $HOME
+    first_char="${input:0:1}"
+
+    if [[ "$first_char" == "~" ]]; then
+        input="${HOME}${input:1}"
+    fi
+
+    if [[ "$first_char" == "~" && -d "$input" ]]; then
+        destination="$input"
+    elif [[ -d "$input" ]]; then
+        destination="${destination}${input%/}"
     else
-      cd "$input"
+        echo " ❌ Not a directory: $input"
     fi
   done
+
+  cd "$destination"
 }
 
 _@run() {
