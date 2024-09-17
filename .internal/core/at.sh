@@ -10,3 +10,13 @@
     bash $base/.internal/cmd/run.sh "$@"
   fi
 }
+
+@a () {
+  local command="$@"
+  local value
+  read -p "alias: " value
+  if [[ -z "$value" ]]; then
+    return 1
+  fi
+  alias $value="$command"
+}
