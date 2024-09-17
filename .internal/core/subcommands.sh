@@ -16,7 +16,7 @@ _@update() {
 
 _@cd() {
   while true; do
-    read -p "[$(pwd)] " input
+    read -e -p "[$(pwd)] " input
     if [[ -z "$input" ]]; then
         echo
         break
@@ -33,7 +33,7 @@ _@cd() {
 _@run() {
   local command=""
   while true; do
-    read -p "[$command] " input
+    read -e -p "[$command] " input
     if [[ -z "$input" ]]; then
         echo
         break
