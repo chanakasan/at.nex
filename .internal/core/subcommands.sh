@@ -29,3 +29,26 @@ _@cd() {
     fi
   done
 }
+
+_@run() {
+  local command=""
+  while true; do
+    read -p "[$command] " input
+    if [[ -z "$input" ]]; then
+        echo
+        break
+    fi
+
+    # append
+    if [[ "${input: -1}" == "/" ]]; then
+      command="${command}${input}"
+    elif [[ "${input: -1}" == "+" ]]; then
+      command="${command}${input%+}"
+    else
+      command="${command}${input} "
+    fi
+  done
+  
+  # run
+  $command
+}
