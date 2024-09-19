@@ -13,10 +13,12 @@
 
 @a () {
   local command="$@"
+  local defaultValue="d"
   local value
-  read -p "alias: " value
+  read -p "alias: (d) " value
   if [[ -z "$value" ]]; then
-    return 1
+    alias $defaultValue="$command"
+  else
+    alias $value="$command"
   fi
-  alias $value="$command"
 }
