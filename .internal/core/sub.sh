@@ -18,7 +18,7 @@ _f_@cd() {
   local destination="$PWD"
   local first_char=""
   while true; do
-    read -e -p "[$destination] " input
+    read -e -p "cd: $destination " input
     if [[ -z "$input" ]]; then
         echo
         break

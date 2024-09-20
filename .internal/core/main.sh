@@ -20,7 +20,7 @@ _f_try() {
 _f_prompt() {
   local value
   local fn_default=_f_@cmd
-  read -p "function: (default) " value
+  read -p "function: " value
   if [[ -z $value ]]; then
     $fn_default
   else
