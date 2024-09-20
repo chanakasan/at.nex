@@ -1,24 +1,20 @@
-_@hello() {
-  echo "Hello @ !"
+_f_@hello() {
+  echo "Hello fun !"
 }
 
-_@rel() {
+_f_@rel() {
   source $HOME/.bashrc
 }
 
-_@r() {
-  _@rel
-}
-
-_@ed() {
+_f_@ed() {
   bash $base/.internal/cmd/ed.sh ${@:2}
 }
 
-_@update() {
+_f_@update() {
   bash $base/.internal/cmd/update.sh ${@:2}
 }
 
-_@cd() {
+_f_@cd() {
   local destination="$PWD"
   local first_char=""
   while true; do
@@ -31,24 +27,26 @@ _@cd() {
 
     if [[ "$first_char" == "~" ]]; then
         input="${HOME}${input:1}"
+    elif [[ "$first_char" == "/" ]]; then
+        input="${input:1}"
     fi
 
     if [[ "$first_char" == "~" && -d "$input" ]]; then
         destination="$input"
     elif [[ -d "$input" ]]; then
-        destination="${destination}${input%/}"
+        destination="${destination}/${input%/}"
     else
         echo " ❌ Not a directory: $input"
     fi
+    
+    cd "$destination"
   done
-
-  cd "$destination"
 }
 
-_@run() {
+_f_@cmd() {
   local command=""
   while true; do
-    read -e -p "[$command] " input
+    read -e -p "cmd: $command" input
     if [[ -z "$input" ]]; then
         echo
         break

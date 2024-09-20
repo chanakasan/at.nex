@@ -8,12 +8,12 @@ source $nx_at_root/.internal/mixins/debug.sh
 source $nx_at_root/src/config/alias.sh
 
 main() {
-  local main_cmd="@ $*"
+  local main_cmd="f $*"
   local args="$*"
   local input=$(create_key "$args")
   exit_if_empty $1
   log "=> $main_cmd"
-  try_alias $input
+  # try_alias $input
   try_script "$PWD/.local/script" $input
   try_script "$HOME/user/script" $input
   not_found
@@ -61,22 +61,25 @@ try_script() {
     log file: $file
     if [ -f "$file" ]; then
       bash "$file"
+      
       exit $?
     fi
   fi
 }
 
 print_usage() {
-  echo " Usage: @ <1> <2> <3> ..."
   echo
+  echo " Usage: f <scri pt nam e>"
 }
 
 not_found() {
+  echo
   echo " not found: <$args.sh>"
 }
 
 exit_if_empty() {
   if [ -z "$1" ]; then
+    echo
     echo " argument required"
     print_usage
     exit 1
