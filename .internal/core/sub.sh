@@ -42,26 +42,3 @@ _f_@cd() {
     cd "$destination"
   done
 }
-
-_f_@cmd() {
-  local command=""
-  while true; do
-    read -e -p "cmd: $command" input
-    if [[ -z "$input" ]]; then
-        echo
-        break
-    fi
-
-    # append
-    if [[ "${input: -1}" == "/" ]]; then
-      command="${command}${input}"
-    elif [[ "${input: -1}" == "+" ]]; then
-      command="${command}${input%+}"
-    else
-      command="${command}${input} "
-    fi
-  done
-  
-  # run
-  $command
-}
