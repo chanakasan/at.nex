@@ -1,3 +1,4 @@
+
 f () {
   local base=$nx_at_root
   if [[ -z "$1" ]]; then
@@ -12,14 +13,14 @@ _f_try() {
   if [[ $(type -t "$fn_name") == "function" ]]; then
     $fn_name
   else
-    bash $base/.internal/cmd/run_script.sh "$1"
+    bash $base/.internal/subcommand/run_script.sh "$1"
   fi
 }
 
 _f_prompt() {
   local value
   local fn_default=_f_@cmd
-  read -p "function: (cmd) " value
+  read -p "function: (default) " value
   if [[ -z $value ]]; then
     $fn_default
   else
