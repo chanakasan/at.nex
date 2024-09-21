@@ -1,7 +1,8 @@
 export nx_at_root=$HOME/dotfiles/at.nex
-source $nx_at_root/.internal/core/main.sh
-source $nx_at_root/.internal/core/sub.sh
-source $nx_at_root/.internal/core/short.sh
+source $nx_at_root/.internal/core/f.sh
+source $nx_at_root/.internal/core/fsub.sh
+source $nx_at_root/.internal/core/a.sh
+source $nx_at_root/.internal/core/c.sh
 
 # ext
 # source $nx_at_root/.internal/ext/prompt.sh

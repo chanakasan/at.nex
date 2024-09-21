@@ -42,3 +42,7 @@ _f_@cd() {
     cd "$destination"
   done
 }
+
+_f_@r() {
+  _f_@rel
+}
