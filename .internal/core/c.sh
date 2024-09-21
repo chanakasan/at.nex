@@ -1,29 +1,34 @@
-
 c () {
-  local command="$@"
+  local main_cmd="$1"
+  local args="${@:2}"
   local n=1
 
+  if [[ -z $main_cmd ]]; then
+    read -e -p "cmd: " main_cmd
+  fi
+
   while true; do
-    if [[ -z $command ]]; then
-      read -e -p "cmd: " input
+    if [[ -z $args ]]; then
+      read -e -p "$main_cmd: " input
     else
-      read -e -p "cmd: $command " input
+      read -e -p "$main_cmd: $args " input
     fi
 
-    if [[ -z "$input" ]]; then
+    if [[ "$input" == "\`" ]]; then
         break
     fi
 
-    # append
+    #<< append args
     if [[ "${input: -1}" == "/" ]]; then
-      command="${command}${input}"
+      args="${args}${input}"
     elif [[ "${input: -1}" == "+" ]]; then
-      command="${command}${input%+}"
-    elif [[ $n == 1 && -z $command ]]; then
-      command="${input}"
+      args="${args}${input%+}"
+    elif [[ $n == 1 && -z $args ]]; then
+      args="${input}"
     else
-      command="${command} ${input}"
+      args="${args} ${input}"
     fi
+    #>>
 
     # remove leading whitespace
     # if [[ $n == 1 ]]; then
@@ -32,7 +37,10 @@ c () {
     
     n=2
   done
-  
-  echo
-  $command
+
+  if [[ -n $main_cmd ]]; then
+    command="$main_cmd $args"
+    echo
+    $command
+  fi
 }
